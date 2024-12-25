@@ -1,1 +1,4 @@
-# practice
+```yaml
+select * from customers;
+EOF
+```
