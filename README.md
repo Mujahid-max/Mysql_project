@@ -11,12 +11,12 @@ Expected output:
 ```yaml
 select customernumber,customername,
 case 
-	when country in ("Canada","USA") then "North America"
+when country in ("Canada","USA") then "North America"
     when country  in ("UK","France","Germany") then "Europe"
 else "other"
  end
-	customersegment
-		from customers;
+customersegment
+from customers;
 
 ```
 
