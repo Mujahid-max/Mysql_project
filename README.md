@@ -19,9 +19,22 @@ customersegment
 from customers;
 
 ```
+*  Using a CASE statement, segment customers into three categories based on their country:(Refer Customers table)
+                        "North America" for customers from USA or Canada
+                        "Europe" for customers from UK, France, or Germany
+                        "Other" for all remaining countries
 
  
 ```yaml
-
+SELECT 
+    customernumber,
+    customername,
+    CASE
+        WHEN country IN ('Canada' , 'USA') THEN 'North America'
+        WHEN country IN ('UK' , 'France', 'Germany') THEN 'Europe'
+        ELSE 'other'
+    END customersegment
+FROM
+    customers;
 
 ```
