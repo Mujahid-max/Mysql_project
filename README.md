@@ -1,4 +1,11 @@
 ```yaml
 select * from customers;
-EOF
+
+```
+
+
+```yaml
+yam2 select * from customers data table;
+
+
 ```
