@@ -83,7 +83,7 @@ alter table customers modify last_name varchar(50)  not null;
 desc customers;
 ```
 
-* order_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
+7. order_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
 * customer_id: This should be an integer referencing the customer_id in the Customers table  (FOREIGN KEY).
 * order_date: This should be a DATE data type to store the order date.
 * total_amount: This should be a DECIMAL(10,2) to store the total order amount.
@@ -104,7 +104,7 @@ constraint fk_customer foreign key(customer_id)references customers(customer_id)
 ```
 
 
-*List the top 5 countries (by order count) that Classic Models ships to. (Use the Customers and Orders tables)
+8. List the top 5 countries (by order count) that Classic Models ships to. (Use the Customers and Orders tables)
 
 ```yaml
 select customers.country,count(orders.ordernumber)as order_count from orders
@@ -113,7 +113,7 @@ group by customers.country
 order by order_count desc
 limit 5;
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture6.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/be9fd5efef8b7a15f224d630a64a8c1c9baa700b/Picture6.png)
 
 #### DDL Commands: Create, Alter, Rename
 * Create table facility. Add the below fields into it.
