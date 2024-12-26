@@ -29,25 +29,6 @@ from customers;
 ```
 ![output](https://github.com/Mujahid-max/practice/blob/main/Picture3.png?raw=true)
 
-*  Using a CASE statement, segment customers into three categories based on their country:(Refer Customers table)
-                        "North America" for customers from USA or Canada
-                        "Europe" for customers from UK, France, or Germany
-                        "Other" for all remaining countries
-
- 
-```yaml
-SELECT 
-    customernumber,
-    customername,
-    CASE
-        WHEN country IN ('Canada' , 'USA') THEN 'North America'
-        WHEN country IN ('UK' , 'France', 'Germany') THEN 'Europe'
-        ELSE 'other'
-    END customersegment
-FROM
-    customers;
-
-```
 
 * Using the OrderDetails table, identify the top 10 products (by productCode) with the highest total order quantity across all orders.
 
@@ -60,6 +41,7 @@ GROUP BY productcode
 ORDER BY totalordered DESC
 LIMIT 10;
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture4.png?raw=true)
 
 * Company wants to analyse payment frequency by month. Extract the month name from the payment date to count the total number of payments for each month and include only those months with a payment count exceeding 20. Sort the results by total number of payments in descending order. 
 
@@ -73,6 +55,7 @@ GROUP BY MONTHNAME(paymentDate) , payment_month
 HAVING num_payment > 20;
 
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture5.png?raw=true)
 
 * customer_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
 * first_name: This should be a VARCHAR(50) to store the customer's first name.
@@ -127,6 +110,7 @@ group by customers.country
 order by order_count desc
 limit 5;
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture6.png?raw=true)
 
 #### DDL Commands: Create, Alter, Rename
 * Create table facility. Add the below fields into it.
@@ -150,6 +134,7 @@ alter table facility modify facility_id int primary key auto_increment;
 desc facility;
 alter table facility add column city varchar(100) not null after name;
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture7.png?raw=true)
 
 * Create a view named product_category_sales that provides insights into sales performance by product category. This view should include the following information:
 productLine: The category name of the product (from the ProductLines table).
@@ -175,7 +160,7 @@ orders ON orders.ordernumber = orderdetails.ordernumber
 group by productLine;
 
 ```
-
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture8.png?raw=true)
 
 * Using customers and orders tables, rank the customers based on their order frequency
 
@@ -209,6 +194,7 @@ order by
 order_frequency_rank;
 
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture9.png?raw=true)
 
 
 * Calculate year wise, month name wise count of orders and year over year (YoY) percentage change. Format the YoY values in no decimals and show in % sign.
@@ -231,8 +217,7 @@ select
 0
 ),'%'
 )as "% YOY Changes"
-from growth;
-            
-
+from growth;            
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture10.png?raw=true)
 
