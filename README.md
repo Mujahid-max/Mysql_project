@@ -172,31 +172,31 @@ group by productLine;
 ```yaml
 with customerordercounts as (
 	select
-    c.customername,count(o.ordernumber) as order_count
-    from
-		customers c
-	join
-		orders o on c.customerNumber = o.customerNumber
-	group by
-		c.customerName
+c.customername,count(o.ordernumber) as order_count
+from
+customers c
+join
+orders o on c.customerNumber = o.customerNumber
+group by
+c.customerName
 ),
 rankedcustomers as (
 select 
-	customername,
-    order_count,
-    rank() over (order by order_count desc) as order_frequency_rank,
-    dense_rank() over	(order by Order_count desc) as order_frequency_Dense_rank
+customername,
+order_count,
+rank() over (order by order_count desc) as order_frequency_rank,
+dense_rank() over	(order by Order_count desc) as order_frequency_Dense_rank
 from
-	customerordercounts
+customerordercounts
 )
 select 
 customername,
 order_count,
 order_frequency_rank as order_frequency_mk
 from 
-	rankedcustomers
-    order by 
-    order_frequency_rank;
+rankedcustomers
+order by 
+order_frequency_rank;
 
 ```
 
@@ -216,14 +216,12 @@ select
 	`order year`,
     `order month`,
     `total orders`,
-    concat(round(100* (
-				(`total orders`-lag(`total orders`)over(order by `order year`))/
-			lag(`total orders`) over(order by `order year`)
-            ),
-            0
-            ),'%'
-		     )as "% YOY Changes"
-            from growth;
+    concat(round(100* ((`total orders`-lag(`total orders`)over(order by `order year`))/lag(`total orders`) over(order by `order year`)
+),
+0
+),'%'
+)as "% YOY Changes"
+from growth;
             
 
 ```
