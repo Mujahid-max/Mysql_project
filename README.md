@@ -197,7 +197,7 @@ order by
 order_frequency_rank;
 
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture9.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/0f5a450d22da3d40e13b11135517cce285fb60f9/Picture9.png)
 
 
 12. Calculate year wise, month name wise count of orders and year over year (YoY) percentage change. Format the YoY values in no decimals and show in % sign.
