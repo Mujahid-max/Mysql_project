@@ -29,7 +29,7 @@ customersegment
 from customers;
 
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture3.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/86d9ef9234e42dff98360737a8e4ad249bf2339c/Picture3.png)
 
 
 * Using the OrderDetails table, identify the top 10 products (by productCode) with the highest total order quantity across all orders.
