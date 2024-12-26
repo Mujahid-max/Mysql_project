@@ -222,5 +222,5 @@ select
 )as "% YOY Changes"
 from growth;            
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture10.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/75d54b15823eb034b540f491e3504729c827a941/Picture10.png)
 
