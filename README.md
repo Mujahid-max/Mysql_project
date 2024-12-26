@@ -14,7 +14,7 @@ Expected output:
 ```yaml
 select distinct productline from products where productLine like "% Cars";
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture2.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/e0b93e261a354cac2dfb80138fd4573a3b0aa0d9/Picture2.png)
 * 	Show the unique productline values containing the word cars at the end from the products table.
 Expected output:
 
