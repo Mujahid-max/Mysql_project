@@ -163,9 +163,9 @@ orders ON orders.ordernumber = orderdetails.ordernumber
 group by productLine;
 
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture8.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/88a33b0f4b837403fc4594082eca49909a1b5e0a/Picture8.png)
 
-* Using customers and orders tables, rank the customers based on their order frequency
+11. Using customers and orders tables, rank the customers based on their order frequency
 
 ```yaml
 with customerordercounts as (
@@ -200,7 +200,7 @@ order_frequency_rank;
 ![output](https://github.com/Mujahid-max/practice/blob/main/Picture9.png?raw=true)
 
 
-* Calculate year wise, month name wise count of orders and year over year (YoY) percentage change. Format the YoY values in no decimals and show in % sign.
+12. Calculate year wise, month name wise count of orders and year over year (YoY) percentage change. Format the YoY values in no decimals and show in % sign.
 
 ```yaml
 with growth as (
