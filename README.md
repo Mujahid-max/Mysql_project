@@ -150,17 +150,17 @@ productLine: The category name of the product (from the ProductLines table).
 
 ```yaml
 create view product_category_sales as
-	SELECT 
+SELECT 
 productlines.productline AS productline,
 sum(orderdetails.quantityordered * orderdetails.priceEach) AS total_sales,
 count(distinct orders.ordernumber) AS number_of_orders
-	FROM 
+FROM 
 productlines
-	JOIN 
+JOIN 
 products ON products.productline = productlines.productline
-	JOIN 
+JOIN 
 orderdetails ON products.productcode = orderdetails.productcode
-	JOIN 
+JOIN 
 orders ON orders.ordernumber = orderdetails.ordernumber
 group by productLine;
 
@@ -171,7 +171,7 @@ group by productLine;
 
 ```yaml
 with customerordercounts as (
-	select
+select
 c.customername,count(o.ordernumber) as order_count
 from
 customers c
@@ -213,7 +213,7 @@ group by
 `order year`,`order month`
 )
 select 		
-	`order year`,
+`order year`,
     `order month`,
     `total orders`,
     concat(round(100* ((`total orders`-lag(`total orders`)over(order by `order year`))/lag(`total orders`) over(order by `order year`)
