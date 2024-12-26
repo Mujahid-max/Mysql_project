@@ -5,7 +5,7 @@ select employeenumber,firstname,lastname from employees
 where reportsTo = 1102;
 ```
 
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture1.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/0b6e25c2de7a54a19389d7738255fad28b039c3c/Picture1.png)
 
 
 b.	Show the unique productline values containing the word cars at the end from the products table.
