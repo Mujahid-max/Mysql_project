@@ -1,4 +1,4 @@
-* Fetch the employee number, first name and last name of those employees who are working as Sales Rep reporting to employee with employeenumber 1102 (Refer employee table)
+1. Fetch the employee number, first name and last name of those employees who are working as Sales Rep reporting to employee with employeenumber 1102 (Refer employee table)
 
 ```yaml
 select employeenumber,firstname,lastname from employees
@@ -8,14 +8,15 @@ where reportsTo = 1102;
 ![output](https://github.com/Mujahid-max/Mysql_project/blob/0b6e25c2de7a54a19389d7738255fad28b039c3c/Picture1.png)
 
 
-b.	Show the unique productline values containing the word cars at the end from the products table.
+2. Show the unique productline values containing the word cars at the end from the products table.
 Expected output:
 
 ```yaml
 select distinct productline from products where productLine like "% Cars";
 ```
 ![output](https://github.com/Mujahid-max/Mysql_project/blob/e0b93e261a354cac2dfb80138fd4573a3b0aa0d9/Picture2.png)
-* 	Show the unique productline values containing the word cars at the end from the products table.
+
+3. Show the unique productline values containing the word cars at the end from the products table.
 Expected output:
 
 ```yaml
@@ -32,7 +33,7 @@ from customers;
 ![output](https://github.com/Mujahid-max/Mysql_project/blob/86d9ef9234e42dff98360737a8e4ad249bf2339c/Picture3.png)
 
 
-* Using the OrderDetails table, identify the top 10 products (by productCode) with the highest total order quantity across all orders.
+4. Using the OrderDetails table, identify the top 10 products (by productCode) with the highest total order quantity across all orders.
 
 ```yaml
 SELECT 
@@ -43,9 +44,9 @@ GROUP BY productcode
 ORDER BY totalordered DESC
 LIMIT 10;
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture4.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/ed0e642e9aa9f42e633cb3c5b2ed7bcaf5c662bb/Picture4.png)
 
-* Company wants to analyse payment frequency by month. Extract the month name from the payment date to count the total number of payments for each month and include only those months with a payment count exceeding 20. Sort the results by total number of payments in descending order. 
+5. Company wants to analyse payment frequency by month. Extract the month name from the payment date to count the total number of payments for each month and include only those months with a payment count exceeding 20. Sort the results by total number of payments in descending order. 
 
 ```yaml
 SELECT 
@@ -59,7 +60,7 @@ HAVING num_payment > 20;
 ```
 ![output](https://github.com/Mujahid-max/practice/blob/main/Picture5.png?raw=true)
 
-* customer_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
+6. customer_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
 * first_name: This should be a VARCHAR(50) to store the customer's first name.
 * last_name: This should be a VARCHAR(50) to store the customer's last name.
 * email: This should be a VARCHAR(255) set as UNIQUE to ensure no duplicate email addresses exist.
