@@ -39,21 +39,28 @@ FROM
 
 ```
 
-*  Select the customerNumber, customerName, and the assigned region as "CustomerSegment".
-
-```yaml
-
-```
-
 * Using the OrderDetails table, identify the top 10 products (by productCode) with the highest total order quantity across all orders.
 
 ```yaml
-
+SELECT 
+    productcode, SUM(quantityordered) AS totalordered
+FROM
+    orderdetails
+GROUP BY productcode
+ORDER BY totalordered DESC
+LIMIT 10;
 ```
 
-* Company wants to analyse payment frequency by month. Extract the month name from the payment date to count the total number of payments for each month and include only those months with a payment count exceeding 20. Sort the results by total number of payments in descending order.  (Refer Payments table). 
+* Company wants to analyse payment frequency by month. Extract the month name from the payment date to count the total number of payments for each month and include only those months with a payment count exceeding 20. Sort the results by total number of payments in descending order. 
 
 ```yaml
+SELECT 
+    MONTHNAME(paymentDate) AS payment_month,
+    COUNT(paymentdate) AS num_payment
+FROM
+    payments
+GROUP BY MONTHNAME(paymentDate) , payment_month
+HAVING num_payment > 20;
 
 ```
 
@@ -66,7 +73,18 @@ FROM
 #### Add a NOT NULL constraint to the first_name and last_name columns to ensure they always have a value.
 
 ```yaml
+create table customers(
+customer_id int primary key auto_increment,
+first_name Varchar(50),
+last_name Varchar(50),
+email varchar(255),
+phone_number varchar(20)
+);
+alter table customers modify  first_name varchar(50)  not null;
 
+alter table customers modify last_name varchar(50)  not null;
+
+desc customers;
 ```
 
 * order_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
@@ -79,6 +97,13 @@ FROM
 * Add a CHECK constraint to ensure the total_amount is always a positive value.
 
 ```yaml
+create table orders(
+order_id int primary key not null auto_increment,
+customer_id int not null,
+order_date date,
+total_amount decimal(10,2) NOT NULL CHECK (total_amount >0),
+constraint fk_customer foreign key(customer_id)references customers(customer_id)
+);
 
 ```
 
@@ -86,7 +111,11 @@ FROM
 *List the top 5 countries (by order count) that Classic Models ships to. (Use the Customers and Orders tables)
 
 ```yaml
-
+select customers.country,count(orders.ordernumber)as order_count from orders
+join customers on customers.customerNumber = orders.customerNumber
+group by customers.country
+order by order_count desc
+limit 5;
 ```
 
 #### DDL Commands: Create, Alter, Rename
@@ -100,7 +129,16 @@ i) Alter the table by adding the primary key and auto increment to Facility_ID c
 ii) Add a new column city after name with data type as varchar which should not accept any null values.
 
 ```yaml
+create table facility(
+Facility_id int,
+Name varchar(100),
+State varchar(100),
+Country Varchar(100)
+);
 
+alter table facility modify facility_id int primary key auto_increment;
+desc facility;
+alter table facility add column city varchar(100) not null after name;
 ```
 
 * Create a view named product_category_sales that provides insights into sales performance by product category. This view should include the following information:
@@ -111,6 +149,20 @@ productLine: The category name of the product (from the ProductLines table).
 * number_of_orders: The total number of orders containing products from that category.
 
 ```yaml
+create view product_category_sales as
+	SELECT 
+productlines.productline AS productline,
+sum(orderdetails.quantityordered * orderdetails.priceEach) AS total_sales,
+count(distinct orders.ordernumber) AS number_of_orders
+	FROM 
+productlines
+	JOIN 
+products ON products.productline = productlines.productline
+	JOIN 
+orderdetails ON products.productcode = orderdetails.productcode
+	JOIN 
+orders ON orders.ordernumber = orderdetails.ordernumber
+group by productLine;
 
 ```
 
@@ -118,6 +170,33 @@ productLine: The category name of the product (from the ProductLines table).
 * Using customers and orders tables, rank the customers based on their order frequency
 
 ```yaml
+with customerordercounts as (
+	select
+    c.customername,count(o.ordernumber) as order_count
+    from
+		customers c
+	join
+		orders o on c.customerNumber = o.customerNumber
+	group by
+		c.customerName
+),
+rankedcustomers as (
+select 
+	customername,
+    order_count,
+    rank() over (order by order_count desc) as order_frequency_rank,
+    dense_rank() over	(order by Order_count desc) as order_frequency_Dense_rank
+from
+	customerordercounts
+)
+select 
+customername,
+order_count,
+order_frequency_rank as order_frequency_mk
+from 
+	rankedcustomers
+    order by 
+    order_frequency_rank;
 
 ```
 
@@ -125,68 +204,27 @@ productLine: The category name of the product (from the ProductLines table).
 * Calculate year wise, month name wise count of orders and year over year (YoY) percentage change. Format the YoY values in no decimals and show in % sign.
 
 ```yaml
+with growth as (
+select year(orderdate) as `order year`,
+monthname(orderdate) as `order month`,
+count(orderdate) as `total orders`
+from orders
+group by
+`order year`,`order month`
+)
+select 		
+	`order year`,
+    `order month`,
+    `total orders`,
+    concat(round(100* (
+				(`total orders`-lag(`total orders`)over(order by `order year`))/
+			lag(`total orders`) over(order by `order year`)
+            ),
+            0
+            ),'%'
+		     )as "% YOY Changes"
+            from growth;
+            
 
 ```
 
-
-
-
-```yaml
-
-```
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-
-```yaml
-
-```
-
-
-
-
-```yaml
-
-```
