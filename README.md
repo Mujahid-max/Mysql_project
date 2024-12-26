@@ -58,7 +58,7 @@ GROUP BY MONTHNAME(paymentDate) , payment_month
 HAVING num_payment > 20;
 
 ```
-![output](https://github.com/Mujahid-max/practice/blob/main/Picture5.png?raw=true)
+![output](https://github.com/Mujahid-max/Mysql_project/blob/61b081e2a4564834c10ffb05c2123b4ae604fc60/Picture5.png)
 
 6. customer_id: This should be an integer set as the PRIMARY KEY and AUTO_INCREMENT.
 * first_name: This should be a VARCHAR(50) to store the customer's first name.
