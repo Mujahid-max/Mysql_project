@@ -4,8 +4,15 @@
 select employeenumber,firstname,lastname from employees
 where reportsTo = 1102;
 ```
-![output perview](https://github.com/Mujahid-max/practice/blob/main/Picture1.png?raw=true)
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture1.png?raw=true)
 
+b.	Show the unique productline values containing the word cars at the end from the products table.
+Expected output:
+
+```yaml
+select distinct productline from products where productLine like "% Cars";
+```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture2.png?raw=true)
 * 	Show the unique productline values containing the word cars at the end from the products table.
 Expected output:
 
@@ -20,6 +27,8 @@ customersegment
 from customers;
 
 ```
+![output](https://github.com/Mujahid-max/practice/blob/main/Picture3.png?raw=true)
+
 *  Using a CASE statement, segment customers into three categories based on their country:(Refer Customers table)
                         "North America" for customers from USA or Canada
                         "Europe" for customers from UK, France, or Germany
