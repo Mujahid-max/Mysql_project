@@ -4,6 +4,7 @@
 select employeenumber,firstname,lastname from employees
 where reportsTo = 1102;
 ```
+![output perview](https://github.com/Mujahid-max/practice/blob/main/Picture1.png?raw=true)
 
 * 	Show the unique productline values containing the word cars at the end from the products table.
 Expected output:
