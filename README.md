@@ -114,13 +114,13 @@ limit 5;
 
 #### DDL Commands: Create, Alter, Rename
 * Create table facility. Add the below fields into it.
-●	Facility_ID
-●	Name
-●	State
-●	Country
+* Facility_ID
+* Name
+* State
+* Country
 
-i) Alter the table by adding the primary key and auto increment to Facility_ID column.
-ii) Add a new column city after name with data type as varchar which should not accept any null values.
+* Alter the table by adding the primary key and auto increment to Facility_ID column.
+* Add a new column city after name with data type as varchar which should not accept any null values.
 
 ```yaml
 create table facility(
